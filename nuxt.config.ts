@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   ssr: false,
 
   app: {
-    baseURL: process.env.NUXT_APP_BASE_URL || '/',
+    baseURL:'/novamart/',
     head: {
       title: 'NovaMart — Premium Shopping',
       meta: [
