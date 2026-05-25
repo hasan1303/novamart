@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   ssr: false,
 
   app: {
-    baseURL:'/novamart/',
+    baseURL: process.env.NUXT_APP_BASE_URL || '/',
     head: {
       title: 'NovaMart — Premium Shopping',
       meta: [
@@ -12,7 +12,6 @@ export default defineNuxtConfig({
         { name: 'description', content: 'Discover premium products at NovaMart.' },
       ],
       link: [
-        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
         {

@@ -124,7 +124,10 @@ async function addToCart() {
       category: product.value.category,
     })
   }
-  toastStore.show(`${qty.value}× "${product.value.title.slice(0, 25)}…" added!`)
+  const shortTitle = product.value.title.length > 30
+    ? product.value.title.slice(0, 30) + '…'
+    : product.value.title
+  toastStore.show(`${qty.value}× "${shortTitle}" added!`)
   await new Promise(r => setTimeout(r, 1200))
   adding.value = false
 }
@@ -132,8 +135,12 @@ async function addToCart() {
 onMounted(async () => {
   try {
     product.value = await fetchProduct(route.params.id as string)
-    useHead({ title: `${product.value.title} — NovaMart` })
-  } catch {}
+    if (product.value?.title) {
+      useHead({ title: `${product.value.title} — NovaMart` })
+    }
+  } catch {
+    // Product not found, will show 404 state
+  }
   loading.value = false
 })
 </script>

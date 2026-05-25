@@ -4,7 +4,7 @@
     :class="scrolled ? 'glass shadow-xl shadow-black/20' : 'bg-transparent'"
   >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16 md:h-18">
+      <div class="flex items-center justify-between h-16 md:h-[72px]">
         <!-- Logo -->
         <NuxtLink to="/" class="flex items-center gap-2 group">
           <div class="w-8 h-8 rounded-lg bg-electric-500 flex items-center justify-center shadow-lg shadow-electric-500/40 group-hover:shadow-electric-400/60 transition-shadow">
@@ -79,8 +79,14 @@ const cartCount = computed(() => cartStore.cartCount)
 const scrolled = ref(false)
 const mobileOpen = ref(false)
 
+const onScroll = () => { scrolled.value = window.scrollY > 20 }
+
 onMounted(() => {
-  window.addEventListener('scroll', () => { scrolled.value = window.scrollY > 20 }, { passive: true })
+  window.addEventListener('scroll', onScroll, { passive: true })
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', onScroll)
 })
 </script>
 

@@ -8,9 +8,10 @@ export interface Product {
   rating: { rate: number; count: number }
 }
 
-const BASE = 'https://fakestoreapi.com'
-
 export const useProducts = () => {
+  const config = useRuntimeConfig()
+  const BASE = config.public.fakeStoreApi as string
+
   const fetchProducts = async (): Promise<Product[]> => {
     const res = await fetch(`${BASE}/products`)
     return res.json()

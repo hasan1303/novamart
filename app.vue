@@ -10,6 +10,10 @@
 </template>
 
 <script setup lang="ts">
+useHead({
+  link: [{ rel: 'icon', type: 'image/svg+xml', href: 'favicon.svg' }],
+})
+
 const { init } = useTheme()
 const cart = useCartStore()
 
