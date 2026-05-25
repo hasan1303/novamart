@@ -1,0 +1,1 @@
+import{k as e}from"./Cb-oELDo.js";const a=e("toast",{state:()=>({toasts:[]}),actions:{show(t,s="success"){const o=Math.random().toString(36).slice(2);this.toasts.push({id:o,message:t,type:s}),setTimeout(()=>this.remove(o),3200)},remove(t){this.toasts=this.toasts.filter(s=>s.id!==t)}}});export{a as u};
